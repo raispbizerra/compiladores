@@ -1,0 +1,12 @@
+a = 'teste'
+b = [1, 2, 3]
+c = [x for x in b if b > 2]
+
+def torrada(arg1):
+    """TODO: Docstring for functionfunction.
+
+    :arg1: TODO
+    :returns: TODO
+
+    """
+    pass
