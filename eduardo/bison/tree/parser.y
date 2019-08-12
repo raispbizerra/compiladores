@@ -75,7 +75,7 @@ factor: term
       children[0] = $1;
       children[1] = new_node("*", NULL, 0);
       children[2] = $3;
-      $$ = new_node("term", children, 3);
+      $$ = new_node("factor", children, 3);
 
     }
   | factor DIV term    {                             
@@ -83,7 +83,7 @@ factor: term
       children[0] = $1;
       children[1] = new_node("/", NULL, 0);
       children[2] = $3;
-      $$ = new_node("term", children, 3);
+      $$ = new_node("factor", children, 3);
     }
   ;
 
@@ -121,7 +121,6 @@ if(root == NULL) { printf("***"); return; }
         printf(" ");
     }
 }
-
 int main(int argc, char** argv) {
     yyparse();
 }

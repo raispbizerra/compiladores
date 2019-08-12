@@ -448,7 +448,7 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUM", "ADD", "SUB", "MUL", "DIV",
-  "APAR", "FPAR", "EOL", "$accept", "calc", "exp", "fator", "termo", 0
+  "APAR", "FPAR", "EOL", "$accept", "calc", "exp", "factor", "term", 0
 };
 #endif
 
@@ -1381,7 +1381,7 @@ yyreduce:
       children[0] = (yyvsp[(1) - (3)].no);
       children[1] = new_node("*", NULL, 0);
       children[2] = (yyvsp[(3) - (3)].no);
-      (yyval.no) = new_node("termo", children, 3);
+      (yyval.no) = new_node("factor", children, 3);
 
     ;}
     break;
@@ -1393,7 +1393,7 @@ yyreduce:
       children[0] = (yyvsp[(1) - (3)].no);
       children[1] = new_node("/", NULL, 0);
       children[2] = (yyvsp[(3) - (3)].no);
-      (yyval.no) = new_node("termo", children, 3);
+      (yyval.no) = new_node("factor", children, 3);
     ;}
     break;
 
