@@ -35,8 +35,8 @@ Node* new_node(char[50], Node**, int);
 %token FPAR
 %token EOL
 %type<no> calc
-%type<no> termo
-%type<no> fator
+%type<no> term
+%type<no> factor
 %type<no> exp
 %type<simbolo> NUM
 %type<simbolo> MUL
@@ -47,8 +47,8 @@ Node* new_node(char[50], Node**, int);
 /* Regras de Sintaxe */
 calc:
   | calc exp EOL       { print_tree($2); } 
-exp: fator               
-  | exp ADD fator      {
+exp: factor               
+  | exp ADD factor      {
 
       Node** children = (Node**) malloc(sizeof(Node*)*3);
       children[0] = $1;
@@ -57,7 +57,7 @@ exp: fator
       $$ = new_node("exp", children, 3);
 
     }
-  | exp SUB fator      {
+  | exp SUB factor      {
 
       Node** children = (Node**) malloc(sizeof(Node*)*3);
       children[0] = $1;
@@ -68,26 +68,26 @@ exp: fator
     }
   ;
 
-fator: termo            
-  | fator MUL termo    {                             
+factor: term            
+  | factor MUL term    {                             
 
       Node** children = (Node**) malloc(sizeof(Node*)*3);
       children[0] = $1;
       children[1] = new_node("*", NULL, 0);
       children[2] = $3;
-      $$ = new_node("termo", children, 3);
+      $$ = new_node("term", children, 3);
 
     }
-  | fator DIV termo    {                             
+  | factor DIV term    {                             
       Node** children = (Node**) malloc(sizeof(Node*)*3);
       children[0] = $1;
       children[1] = new_node("/", NULL, 0);
       children[2] = $3;
-      $$ = new_node("termo", children, 3);
+      $$ = new_node("term", children, 3);
     }
   ;
 
-termo: NUM { $$ = new_node($1, NULL, 0); }               
+term: NUM { $$ = new_node($1, NULL, 0); }               
 
 %%
 /* Código C geral, será adicionado ao final do código fonte 
@@ -121,6 +121,7 @@ if(root == NULL) { printf("***"); return; }
         printf(" ");
     }
 }
+
 int main(int argc, char** argv) {
     yyparse();
 }
