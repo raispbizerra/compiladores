@@ -69,7 +69,8 @@ Node** allocate_children(int num_children);
 
 %%
 /* Regras de Sintaxe */
-calc: %empty
+calc: 
+	/* empty */ {}
 	| calc exp EOL	{ print_tree($2); printf("]\n"); } 
 exp: factor
 	| exp ADD factor{
