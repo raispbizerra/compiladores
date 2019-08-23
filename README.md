@@ -10,3 +10,7 @@ Repositório reservado para a disciplina CET058 - Compiladores, ministrada pelo 
 ## Organização
 
 ## Materiais Utilizados
+
+### Compilação e execução
+```bash
+flex parte1/src/flex.l && gcc lex.yy.c && ./a.out < parte1/experimentos/in2.py 
